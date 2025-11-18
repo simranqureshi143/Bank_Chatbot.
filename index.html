@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banking Chatbot</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="chat-container">
+
+    <div class="header">
+        💬 Banking Virtual Assistant
+    </div>
+
+    <div id="chatbox" class="chatbox"></div>
+
+    <div class="input-area">
+        <input type="text" id="msg" placeholder="Type your message..." autocomplete="off">
+        <button onclick="send()" class="send-btn">Send</button>
+    </div>
+
+</div>
+
+<script>
+function send() {
+    let msg = document.getElementById("msg").value;
+    let chatbox = document.getElementById("chatbox");
+
+    if (msg.trim() === "") return;
+
+    chatbox.innerHTML += `<div class="user-msg"><span>You:</span> ${msg}</div>`;
+
+    fetch("/get", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `msg=${msg}`
+    })
+    .then(response => response.text())
+    .then(data => {
+        chatbox.innerHTML += `<div class="bot-msg"><span>Bot:</span> ${data}</div>`;
+        chatbox.scrollTop = chatbox.scrollHeight;
+    });
+
+    document.getElementById("msg").value = "";
+}
+</script>
+
+</body>
+</html>
+
