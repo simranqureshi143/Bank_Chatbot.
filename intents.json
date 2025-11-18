@@ -1,0 +1,29 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": ["hi", "hello", "hey", "salaam"],
+      "responses": ["Hello! How can I help you with your banking needs today?"]
+    },
+    {
+      "tag": "balance",
+      "patterns": ["check balance", "account balance", "balance"],
+      "responses": ["Your current account balance is ₹52,300."]
+    },
+    {
+      "tag": "loan",
+      "patterns": ["loan", "loan details", "loan interest"],
+      "responses": ["We offer Home, Personal, Gold & Car Loans. Interest starts from 8.5%."]
+    },
+    {
+      "tag": "credit_card",
+      "patterns": ["credit card", "card limit"],
+      "responses": ["Your credit card limit is ₹1,50,000."]
+    },
+    {
+      "tag": "branch",
+      "patterns": ["branch", "nearest branch", "bank location"],
+      "responses": ["Your nearest branch is at Hyderabad, Punjagutta."]
+    }
+  ]
+}
